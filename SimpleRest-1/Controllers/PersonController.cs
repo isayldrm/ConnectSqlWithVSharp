@@ -30,7 +30,6 @@ namespace SimpleRest_1.Controllers
         }
 
         // POST: api/Person
-            
         public HttpResponseMessage Post([FromBody] Person value)
         {
             PersonPer pp = new PersonPer();
@@ -38,18 +37,8 @@ namespace SimpleRest_1.Controllers
             id = pp.SavePerson(value);
             value.ID = id;
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-            response.Headers.Location = new Uri(Request.RequestUri,String.Format("person/{0}",id));
-            return response;    
-        }
-
-        // PUT: api/Person/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Person/5
-        public void Delete(int id)
-        {
+            response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", id));
+            return response;
         }
     }
 }
